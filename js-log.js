@@ -7,7 +7,7 @@ Log = {
 	error: function(msg) { Log.write(3, 'error', arguments); },
 
 	write: function(lvl, method, args) {
-		if(lvl >= Log.level && console !== undefined && console.log !== undefined) {
+		if(lvl >= Log.level && typeof console !== 'undefined' && console.log !== undefined) {
 			var f = typeof console[method] === 'function' ? console[method] : console.log;
 			f.apply ? f.apply(console, args) : f(args); 
 		}
